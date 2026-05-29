@@ -1,0 +1,37 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Ejecutar pruebas y generar reporte de cobertura",
+            "type": "shell",
+            "command": "mvn",
+            "args": [
+                "clean",
+                "test",
+                "jacoco:report"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "problemMatcher": ["$maven"]
+        },
+        {
+            "label": "Ver reporte de cobertura (JaCoCo)",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-Command",
+                "& { Start-Process 'target/site/jacoco/index.html' }"
+            ],
+            "presentation": {
+                "reveal": "silent"
+            }
+        }
+    ]
+}
